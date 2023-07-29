@@ -6,6 +6,8 @@
         </div>
     </div>
     <button @click="showList=!showList" id="open-list">{{ showList?'关闭':'打开' }}图片列表</button>
+    <!-- <button id="left" @click="left">左横屏</button>
+    <button id="right" @click="right">右横屏</button> -->
 </template>
 
 <script setup lang="ts">
@@ -14,6 +16,16 @@ import Pannellum from './components/Pannellum.vue';
 import files from './plugins/ImgName';
 const nowImg = shallowRef<string>('/imgs/1.jpg')
 const showList = shallowRef(true)
+
+// // 监听设备方向变化
+// window.addEventListener("orientationchange", function() {
+//   if (window.orientation === 90 || window.orientation === -90) {
+//     // 当设备处于横屏模式时，执行你想要的操作
+//     this.alert('横屏？')
+//   }
+// });
+const left = () => window.orientation = 90
+const right = () => window.orientation = -90
 </script>
 
 <style>
@@ -62,5 +74,15 @@ const showList = shallowRef(true)
     top: 10px;
     right: 5px;
     font-size: 16px;
+}
+#left{
+    position: fixed;
+    top: 10px;
+    right: 180px;
+}
+#right{
+    position: fixed;
+    top: 10px;
+    right: 120px;
 }
 </style>
